@@ -15,6 +15,9 @@ class ApiError extends Error {
     if (stack) {
       this.stack = stack;
     } else {
+      //this marks the instance in which the stack trace will be populated in the property "stack"
+      //this.constructor is placed to omit unnecessary constructor call trace as it will appear everytime in the trace if omitted
+      //captureStackTrace(targetInstance, omittedMethods)
       Error.captureStackTrace(this, this.constructor);
     }
   }
